@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
 const App = () => {
-  // ✅ useState ka initial value localStorage se load karo
   const [todos, setTodos] = useState(() => {
     const saved = localStorage.getItem("todos");
     return saved ? JSON.parse(saved) : [];
@@ -12,7 +11,6 @@ const App = () => {
   const [editValue, setEditValue] = useState("");
   const [error, setError] = useState("");
 
-  // ✅ Save todos to localStorage jab bhi todos change ho
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -62,7 +60,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white p-6 rounded shadow-md">
+      <div className="bg-white p-6 rounded shadow-md w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-4 text-blue-600">
           📝 Todo App
         </h1>
@@ -88,7 +86,7 @@ const App = () => {
           {todos.map((todo, index) => (
             <li
               key={index}
-              className="bg-gray-50 border p-3 rounded flex justify-between items-center"
+              className="bg-gray-50 border p-3 rounded flex flex-wrap items-center justify-between gap-2"
             >
               {editIndex === index ? (
                 <>
@@ -99,24 +97,26 @@ const App = () => {
                   />
                   <button
                     onClick={() => saveEdit(index)}
-                    className="bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700"
+                    className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700"
                   >
                     Save
                   </button>
                 </>
               ) : (
                 <>
-                  <span className="flex-1">{todo}</span>
+                  <span className="flex-1 break-words max-w-full">
+                    {todo}
+                  </span>
                   <div className="flex gap-2">
                     <button
                       onClick={() => startEdit(index)}
-                      className="bg-yellow-400 text-white px-2 py-1 rounded hover:bg-yellow-500"
+                      className="bg-yellow-400 text-white px-3 py-1 rounded hover:bg-yellow-500"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => deleteTodo(index)}
-                      className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
+                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                     >
                       Delete
                     </button>
