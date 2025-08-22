@@ -1,0 +1,188 @@
+/* TechTicker.css */
+.tech-ticker-app {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #000000 0%, #000103 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.tech-ticker-app h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tech-ticker-app p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.ticker-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+  cursor: grab;
+}
+
+.ticker-container:active {
+  cursor: grabbing;
+}
+
+.ticker-track {
+  display: flex;
+  user-select: none;
+  width: max-content;
+}
+
+.ticker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 1.2rem 1.8rem;
+  margin: 0 0.7rem;
+  background: transparent;
+  border-radius: 16px;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 15px var(--logo-color, rgba(79, 172, 254, 0.5));
+  transition: all 0.3s ease;
+  min-width: 130px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticker-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--logo-color, #4facfe);
+  opacity: 0.7;
+}
+
+.ticker-item:hover {
+  background: rgba(30, 41, 59, 0.9);
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.1),
+    0 0 25px var(--logo-color, rgba(0, 0, 0, 0.7));
+  transform: translateY(-2px);
+}
+
+.ticker-icon-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.ticker-item:hover .ticker-icon-img {
+  transform: scale(1.1);
+}
+
+.ticker-icon-fallback {
+  font-size: 2.5rem;
+  margin-bottom: 0.7rem;
+  filter: drop-shadow(0 2px 4px rgba(204, 204, 204, 0.3));
+  line-height: 1;
+}
+
+.ticker-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-top: 0.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ticker-instructions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.drag-hint {
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(90deg, rgba(79, 172, 254, 0.027) 0%, rgba(0, 3, 3, 0.2) 100%);
+  border-radius: 25px;
+  color: #4facfe;
+  font-size: 1rem;
+  font-weight: 500;
+  animation: pulse 2s infinite;
+  border: 1px solid rgba(79, 172, 254, 0.3);
+}
+
+@keyframes pulse {
+  0% { 
+    box-shadow: 0 0 0 0 rgba(79, 172, 254, 0.4);
+  }
+  70% { 
+    box-shadow: 0 0 0 10px rgba(79, 172, 254, 0);
+  }
+  100% { 
+    box-shadow: 0 0 0 0 rgba(79, 172, 254, 0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tech-ticker-app {
+    padding: 1.5rem;
+    width: 85%;
+  }
+  
+  .tech-ticker-app h1 {
+    font-size: 1.8rem;
+  }
+  
+  .ticker-item {
+    padding: 1rem 1.2rem;
+    min-width: 110px;
+    margin: 0 0.5rem;
+  }
+  
+  .ticker-icon-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .ticker-icon-fallback {
+    font-size: 2rem;
+  }
+  
+  .drag-hint {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .ticker-item,
+  .ticker-icon-img {
+    transition: none;
+  }
+  
+  .drag-hint {
+    animation: none;
+  }
+}
