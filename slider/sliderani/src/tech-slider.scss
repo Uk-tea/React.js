@@ -1,0 +1,146 @@
+/* tech-slider.scss */
+/* Feel free to tweak radii, blur and colors to match your reference */
+
+.tech-slider {
+  width: 100%;
+  overflow: hidden;
+  padding: 18px 0;
+  background: transparent;
+
+  &__track {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    /* animation for infinite horizontal scroll */
+    animation: marquee linear infinite;
+    animation-duration: var(--speed, 20s);
+    /* make sure items don't wrap */
+    flex-wrap: nowrap;
+    transform: translate3d(0,0,0);
+  }
+
+  .tech-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px; /* adjust as needed */
+    max-width: 220px;
+    text-align: center;
+    gap: 10px;
+
+    .tech-name {
+      font-size: 12px;
+      color: rgba(255,255,255,0.85);
+      margin-top: 6px;
+    }
+
+    .tech-box-img {
+      position: relative;
+      border-radius: 29.886px;
+      background: rgba(255, 255, 255, 0.01);
+      box-shadow: 0 -1.494px 11.88px -2.241px rgba(255,255,255,0.04) inset,
+                  0 0 8.966px 0 rgba(255, 255, 255, 0.05) inset;
+      backdrop-filter: blur(8.56px);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 84px; /* keep consistent height */
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        opacity: 0.06;
+        z-index: 0;
+      }
+
+      .img-wrapper {
+        width: 78px;
+        height: 81px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2;
+
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          display: block;
+        }
+      }
+
+      .shadow {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        z-index: 1;
+        background: rgba(255,255,255,0.01);
+        box-shadow: 0 -1.494px 13.299px -0.747px rgba(0,0,0,0.05) inset;
+        backdrop-filter: blur(8.56px);
+
+        &__wrapper {
+          position: absolute;
+          inset: 0;
+
+          &::after {
+            content: "";
+            position: absolute;
+            inset: -30%;
+            filter: blur(16px);
+            opacity: 0.5;
+            z-index: 0;
+          }
+        }
+      }
+    }
+  }
+
+  /* ---- VARIANT STYLES (you had phrasee-ai and google-cloud-ai) ---- */
+  & .phrasee-ai {
+    .tech-box-img {
+      box-shadow: 0 -1.494px 11.88px -2.241px #FD5102 inset,
+                  0 0 8.966px 0 rgba(255, 255, 255, 0.1) inset;
+      &::before { background-color: #FD5102; }
+      .img-wrapper { width: 78px; height: 81px; }
+      .shadow { box-shadow: 0 -1.494px 13.299px -0.747px #FD5102 inset, 0 0 8.966px 0 rgba(255,255,255,0.1) inset; }
+      .shadow__wrapper::after { background-color: #FD5102; }
+    }
+  }
+
+  & .google-cloud-ai {
+    .tech-box-img {
+      box-shadow: 0 -1.494px 11.88px -2.241px #438EFF inset,
+                  0 0 8.966px 0 rgba(255,255,255,0.1) inset;
+      &::before { background-color: #438EFF; }
+      .img-wrapper { width: 117px; height: 72px; }
+      .shadow { box-shadow: 0 -1.494px 13.299px -0.747px #FFC619 inset, 0 0 8.966px 0 rgba(255,255,255,0.1) inset; }
+      .shadow__wrapper::after { background-color: #FFC619; }
+    }
+  }
+
+  /* generic neutral variants for others (customize) */
+  & .openai { .tech-box-img { &::before { background-color: #111; } .shadow__wrapper::after { background-color: #6B7280; } } }
+  & .aws { .tech-box-img { &::before { background-color: #FF9900; } .shadow__wrapper::after { background-color: #FF9900; } } }
+  & .azure { .tech-box-img { &::before { background-color: #0078D4; } .shadow__wrapper::after { background-color: #0078D4; } } }
+
+  /* ---- animation keyframes for marquee ---- */
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* because we duplicated items, move -50% to loop */
+  }
+
+  /* make sure animation is smooth and starts paused on reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    &__track { animation-play-state: paused !important; }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 640px) {
+    .tech-box { min-width: 120px; }
+    .tech-box .tech-name { display: none; } /* hide labels on very small screens */
+  }
+}
