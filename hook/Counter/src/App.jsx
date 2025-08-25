@@ -1,39 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState } from 'react'
 import './App.css'
 
-function App() {
-  let [counter, setCounter] = useState(0)
-  // let counter = 5
+const App = () => {
+  let [max, setMax] = useState(20);
+  let [min, setMin] = useState(0);
+  let [counter, setCounter] = useState(0);
+
   const addValue = () => {
-    if(counter < 20){
-      setCounter(counter + 1)
+    if (counter < max) {
+      setCounter(counter + 1);
     }
-    // console.log("Clicked", counter);
-    // counter = counter + 1 ;
+  };
+
+  const removeValue = () => {
+    if (counter > min) {
+      setCounter(counter - 1);
+    }
+  };
+
+  const resetValue = () => setCounter(min);
+
+  // --- Dynamic color logic ---
+  let color = "green";
+  if (counter >= max) {
+    color = "red";
+  } else if (counter >= max - Math.ceil((max - min) * 0.4)) {
+    // agar counter last 20% range me ho
+    color = "orange";
   }
 
-  const removeValue = () =>{
-    if(counter > 0){
-      setCounter(counter - 1)
-    }
-  }
   return (
-    <>
-    <h1>React Counter</h1>
-    <br />
-    <h2>Counter Value {counter}</h2>
-    <br />
-    <button
-    onClick={addValue}>Add Value : {counter}</button>
-    <br />
-    <br />
-    <button
-    onClick={removeValue}>Remove Value : {counter}</button>
-    <footer>Footer value : {counter}</footer>
-    </>
-  )
-}
+    <div className="w-full flex justify-center items-center flex-col gap-6 text-xl font-bold">
+      <h1 style={{ color }}>
+        React Counter : {counter}
+      </h1>
 
-export default App
+      <button onClick={addValue} disabled={counter >= max}>
+        Add Value : {counter}
+      </button>
+
+      <button onClick={removeValue} disabled={counter <= min}>
+        Remove Value : {counter}
+      </button>
+
+      <button onClick={resetValue}>Reset Value</button>
+
+      {/* User min aur max change kar sake */}
+      <div className="flex gap-4">
+        <input
+          type="number"
+          value={min}
+          onChange={(e) => setMin(Number(e.target.value))}
+          placeholder="Set Min"
+          className="border p-2 rounded"
+        />
+        <input
+          type="number"
+          value={max}
+          onChange={(e) => setMax(Number(e.target.value))}
+          placeholder="Set Max"
+          className="border p-2 rounded"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default App;
