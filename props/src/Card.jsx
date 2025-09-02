@@ -1,6 +1,6 @@
 export default function Card({ image, title, description }) {
   return (
-    <div className="bg-zinc-900/70 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition h-full flex flex-col">
+    <div className="bg-zinc-900/70 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition h-full w-full flex flex-col">
       <img
         src={image}
         alt={title}

@@ -29,7 +29,7 @@ function Slider() {
 //   };
 
   return (
-    <div className="relative w-full max-w-[1000px] mx-auto overflow-hidden rounded-xl shadow-lg">
+    <div className="relative w-full max-w-screen mx-auto overflow-hidden rounded-xl shadow-lg">
       {/* Images */}
       <div
         className="flex transition-transform duration-700"

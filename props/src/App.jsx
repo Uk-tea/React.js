@@ -1,9 +1,17 @@
-import Slider from "./components/Slider";
-import Card from "./components/Card";
+import Slider from "./Slider";
+import Card from "./Card";
+import Welcome from "./Welcome";
 
 export default function App() {
   return (
-    <main className="min-h-screen bg-black text-white overflow-x-hidden">
+    <main className="min-h-screen bg-black text-white overflow-x-hidden" >
+         <section className="py-12 px-4 flex justify-center items-center flex-col text-justify">
+        <Welcome name={"Usama"} location={"Office"}/>
+        <Welcome name={"Ali"} location={"Undefined"}/>
+        <Welcome name={"Maadi"} location={"Food Street"}/>
+        <Welcome name={"Usama"} location={"Office"}/>
+      </section>
+      
       {/* Slider section */}
       <section className="py-12 px-4">
         <Slider />
