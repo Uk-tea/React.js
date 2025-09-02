@@ -8,7 +8,8 @@ const App = () => {
 
   const addValue = () => {
     if (counter < max) {
-      setCounter(counter + 1);
+      setCounter(prevcounter => prevcounter + 1 );  //yeh question interview ka hai 
+      setCounter(prevcounter => prevcounter + 1 );  //yeh question interview ka hai 
     }
   };
 
@@ -25,7 +26,7 @@ const App = () => {
   if (counter >= max) {
     color = "red";
   } else if (counter >= max - Math.ceil((max - min) * 0.4)) {
-    // agar counter last 20% range me ho
+    // agar counter last 30% range me ho
     color = "orange";
   }
 
@@ -46,20 +47,21 @@ const App = () => {
       <button onClick={resetValue}>Reset Value</button>
 
       {/* User min aur max change kar sake */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 justify-center items-center">
+        Set Min
         <input
           type="number"
           value={min}
           onChange={(e) => setMin(Number(e.target.value))}
           placeholder="Set Min"
-          className="border p-2 rounded"
-        />
+          className="border p-2 rounded-2xl"
+        />Set Max
         <input
           type="number"
           value={max}
           onChange={(e) => setMax(Number(e.target.value))}
           placeholder="Set Max"
-          className="border p-2 rounded"
+          className="border p-2 rounded-2xl"
         />
       </div>
     </div>
