@@ -9,7 +9,7 @@ const App = () => {
   const addValue = () => {
     if (counter < max) {
       setCounter(prevcounter => prevcounter + 1 );  //yeh question interview ka hai 
-      setCounter(prevcounter => prevcounter + 1 );  //yeh question interview ka hai 
+      setCounter(prevcounter => prevcounter + 4 );  //yeh question interview ka hai 
     }
   };
 

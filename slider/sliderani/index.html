@@ -1,105 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Fancy Tech Slider</title>
-<style>
-body {
-  background: #0d0d0d;
-  color: white;
-  margin: 0;
-  padding: 20px;
-  font-family: sans-serif;
-}
-
-.tech-slider {
-  overflow: hidden;
-}
-
-.tech-slider__track {
-  display: flex;
-  animation: scroll 20s linear infinite;
-}
-
-.tech-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 15px;
-}
-
-.tech-box-img {
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.01);
-  box-shadow: 0 -1.5px 11.8px -2.2px #FD5102 inset,
-              0 0 9px rgba(255, 255, 255, 0.1) inset;
-  backdrop-filter: blur(8.5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90px;
-  height: 90px;
-}
-
-.tech-box-img::before {
-  content: "";
-  position: absolute;
-  border-radius: 30px;
-  background-color: #FD5102;
-  opacity: 0.2;
-}
-
-.tech-box img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-}
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-</style>
-</head>
-<body>
-
-<h2>🔥 Fancy Tech Slider</h2>
-<div class="tech-slider">
-  <div class="tech-slider__track">
-    <div class="tech-box">
-      <div class="tech-box-img">
-        <img src="https://via.placeholder.com/60x60?text=AI">
-      </div>
-    </div>
-    <div class="tech-box">
-      <div class="tech-box-img" style="box-shadow: 0 -1.5px 11.8px -2.2px #438EFF inset,0 0 9px rgba(255,255,255,0.1) inset;">
-        <img src="https://via.placeholder.com/60x60?text=Cloud">
-      </div>
-    </div>
-    <div class="tech-box">
-      <div class="tech-box-img" style="box-shadow: 0 -1.5px 11.8px -2.2px #FFC619 inset,0 0 9px rgba(255,255,255,0.1) inset;">
-        <img src="https://via.placeholder.com/60x60?text=ML">
-      </div>
-    </div>
-
-    <!-- Duplicate for smooth infinite scroll -->
-    <div class="tech-box">
-      <div class="tech-box-img">
-        <img src="https://via.placeholder.com/60x60?text=AI">
-      </div>
-    </div>
-    <div class="tech-box">
-      <div class="tech-box-img" style="box-shadow: 0 -1.5px 11.8px -2.2px #438EFF inset,0 0 9px rgba(255,255,255,0.1) inset;">
-        <img src="https://via.placeholder.com/60x60?text=Cloud">
-      </div>
-    </div>
-    <div class="tech-box">
-      <div class="tech-box-img" style="box-shadow: 0 -1.5px 11.8px -2.2px #FFC619 inset,0 0 9px rgba(255,255,255,0.1) inset;">
-        <img src="https://via.placeholder.com/60x60?text=ML">
-      </div>
-    </div>
-  </div>
-</div>
-
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
